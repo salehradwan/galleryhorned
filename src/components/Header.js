@@ -9,6 +9,5 @@ class Header extends React.Component {
         )
     }
 }
-
 // export makes this file visible to other files components
 export default Header;
