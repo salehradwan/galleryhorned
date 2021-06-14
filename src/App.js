@@ -10,24 +10,41 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      allData: hornedData,
       show: false,
       selectedProps: {}
+     
     }
   };
 
+  displayAsModal = name => {
+    const selectedProps = hornedData.find(beast => beast.title === name);
+    this.setState({
+      selectedProps,
+      show: true
+    });
+  }
   handleModal = (prevProps) => {
     this.setState({
-      show: !this.state.show,
-      selectedProps: prevProps
+      show: false,
+      // selectedProps: prevProps
     })
+  }
+
+  updateAllData = (allData) => {
+    this.setState({
+      allData
+    });
   }
   render() {
     return (
       <div>
         <Header />
         <Main
-          hornedData = {hornedData}
-          handleModal = {this.handleModal}
+          allData = {this.state.allData}
+          displayAsModal = {this.displayAsModal}
+          updateAllData = {this.updateAllData}
+          
         />
         <SelectedBeast 
           show = {this.state.show}
