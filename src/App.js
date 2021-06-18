@@ -21,13 +21,13 @@ class App extends React.Component {
     const selectedProps = hornedData.find(beast => beast.title === name);
     this.setState({
       selectedProps,
-      show: true
+      show: !this.state.show
     });
   }
   handleModal = (prevProps) => {
     this.setState({
-      show: false,
-      // selectedProps: prevProps
+      show: !this.state.show,
+      selectedProps: prevProps
     })
   }
 
@@ -44,6 +44,7 @@ class App extends React.Component {
           allData = {this.state.allData}
           displayAsModal = {this.displayAsModal}
           updateAllData = {this.updateAllData}
+          handleModal = {this.handleModal}
           
         />
         <SelectedBeast 
